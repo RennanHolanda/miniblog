@@ -1,6 +1,6 @@
 import styles from "./Register.module.css";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuthentication } from "../../hooks/useAuthentication";
 
 const Register = () => {
@@ -14,6 +14,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setError("");
 
     const user = {
@@ -23,7 +24,7 @@ const Register = () => {
     };
 
     if (password !== confirmPassword) {
-      setError("As senhas precisam ser iguais");
+      setError("As senhas precisam ser iguais.");
       return;
     }
 
@@ -50,19 +51,19 @@ const Register = () => {
             name="displayName"
             required
             placeholder="Nome do usuário"
-            value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
+            value={displayName}
           />
         </label>
         <label>
-          <span>Email:</span>
+          <span>E-mail:</span>
           <input
             type="email"
-            name="emaiç"
+            name="email"
             required
-            placeholder="Email do usuário"
-            value={email}
+            placeholder="E-mail do usuário"
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
         </label>
         <label>
@@ -71,9 +72,9 @@ const Register = () => {
             type="password"
             name="password"
             required
-            placeholder="Insira sua senha"
-            value={password}
+            placeholder="Insira a senha"
             onChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
         </label>
         <label>
@@ -82,13 +83,17 @@ const Register = () => {
             type="password"
             name="confirmPassword"
             required
-            placeholder="Confirme a sua senha"
-            value={confirmPassword}
+            placeholder="Confirme a senha"
             onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
           />
         </label>
-        {!loading && <button className="btn">Cadastrar</button>}
-        {loading && <button className="btn" disabled>Aguarde...</button>}
+        {!loading && <button className="btn">Entrar</button>}
+        {loading && (
+          <button className="btn" disabled>
+            Aguarde...
+          </button>
+        )}
         {error && <p className="error">{error}</p>}
       </form>
     </div>
